@@ -8,7 +8,7 @@ from food import Food_move
 
 worldx = 960
 worldy = 720
-fps = 60
+fps = 144
 clock = pygame.time.Clock()
 main = True
 
@@ -26,6 +26,27 @@ fm = Food_move(background)
 mx = 0
 my = 0
 speed = 3
+fonts = {
+    16: pygame.font.SysFont("Times New Roman", 16, True),
+    32: pygame.font.SysFont("Times New Roman", 32, True)
+}
+
+
+def get_level():
+    level = 1
+    return level
+
+
+def draw():
+    score = fonts[16].render("Scores: " + str(max([player.score, 0])), True, (0, 0, 0))
+    screen.blit(score, (10, 25))
+    level = fonts[16].render("Level: " + str(get_level()), True, (0, 0, 0))
+    screen.blit(level, (10, 10))
+    next_level = fonts[16].render("Get into Next Level Needs to Score " + str(5*get_level() - max([player.score, 0])) + " More Points",
+                                  True, (0, 0, 0))
+    screen.blit(next_level, (10, 40))
+    pygame.display.flip()
+
 
 while main == True:
     background = pygame.image.load(back).convert()
@@ -77,5 +98,7 @@ while main == True:
 
     player.move(mx, my)
     player.draw()
+    draw()
+    dt = 1.0 / float(fps)
     clock.tick(fps)
     pygame.display.flip()

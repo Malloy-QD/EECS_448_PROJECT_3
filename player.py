@@ -18,6 +18,7 @@ class Player:
         self.x = x
         self.y = y
         self.lives = 1
+        self.score = 0
 
     def move(self, x, y):
         if 0 < self.x + sharksize / 2 + x <= self._master.get_width():
@@ -51,4 +52,5 @@ class Player:
                 temp = self.get_distance(j.get_center())
                 if temp <= sharksize / 2 + j.get_radius():
                     self.lives = 1
+                    self.score += 1
                     j.lives = 0
