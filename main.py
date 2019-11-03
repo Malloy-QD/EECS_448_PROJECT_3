@@ -15,7 +15,7 @@ clock = pygame.time.Clock()
 # images
 back = 'image/backbord.jpg'
 shark = 'image/icon.png'
-intro_backg = 'image/WechatIMG14.png'
+intro_backg = 'image/shark.jpg'
 intro_backg2 = 'image/introb.jpeg'
 # screen set up
 screen = pygame.display.set_mode((worldx, worldy))
@@ -29,15 +29,30 @@ pygame.display.set_icon(icon)
 
 
 # loading
-def pre_intro(width, height):
-    fade = pygame.Surface((width, height))
-    fade.fill((255, 255, 255))
-    for i in range(0, 300):
-        fade.set_alpha(i)
-        screen.blit(fade, (0, 0))
+def pre_intro():
+    intro = pygame.image.load(intro_backg).convert()
+    
+    backg=pygame.Surface((worldx,worldy))
+    rect=intro.get_rect()
+    i=1
+    run=True
+    while run:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+       
+        intro.set_alpha(i)
+        screen.blit(backg,backg.get_rect())
+        screen.blit(intro, (100,100))
+        pygame.time.delay(15)
+        i+=1
+        if(i==225):
+            run=False
         pygame.display.update()
-        pygame.time.delay(10)
-
+  
+    
+   
 
 # game intro
 
@@ -212,7 +227,7 @@ def game_loop():
         pygame.display.update()
 
 
-# pre_intro(worldx,worldy)
+pre_intro()
 game_intro()
 game_loop()
 pygame.quit()
