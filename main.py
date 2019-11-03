@@ -9,6 +9,7 @@ from food import Food_move
 worldx = 960
 worldy = 720
 fps = 144
+level = 1
 clock = pygame.time.Clock()
 main = True
 
@@ -26,6 +27,7 @@ fm = Food_move(background)
 mx = 0
 my = 0
 speed = 3
+count = 0
 fonts = {
     16: pygame.font.SysFont("Times New Roman", 16, True),
     32: pygame.font.SysFont("Times New Roman", 32, True)
@@ -33,8 +35,15 @@ fonts = {
 
 
 def get_level():
-    level = 1
+    global level
+    if player.score == level * 5:
+        level += 1
+        reset_game()
     return level
+
+
+def reset_game():
+    player.score = 0
 
 
 def draw():
