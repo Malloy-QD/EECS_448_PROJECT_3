@@ -65,9 +65,9 @@ def pre_intro():
 
 def game_intro():
     intro = True
-    buttom1 = buttom(430, 225, 100, 50, (255, 255, 255), 'Start')
-    buttom2 = buttom(430, 355, 100, 50, (255, 255, 255), 'Quit')
-
+    buttom1 = buttom(430, 375, 100, 50, (255, 255, 255), 'Start')
+    buttom2 = buttom(430, 455, 100, 50, (255, 255, 255), 'Quit')
+    buttom0 = buttom(360, 255, 250, 50, (255, 255, 255), 'Hungary Shark')
     intro_scp = pygame.image.load(intro_backg2).convert()
     x = 0
     while intro:
@@ -102,7 +102,7 @@ def game_intro():
         x -= 1
 
         clock.tick(fps)
-
+        buttom0.draw(screen)
         buttom1.draw(screen)
         buttom2.draw(screen)
         pygame.display.update()
