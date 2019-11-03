@@ -1,3 +1,9 @@
+"""
+food module containing the food class and
+the food movement class which gets the information needed for
+Game to initialize
+"""
+
 import pygame
 import random
 import math

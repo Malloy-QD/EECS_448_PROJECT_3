@@ -1,3 +1,9 @@
+"""
+player module containing the player class which gets the information needed for
+Game to initialize
+"""
+
+
 import pygame
 import math
 import sys

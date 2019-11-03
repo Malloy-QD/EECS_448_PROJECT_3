@@ -1,3 +1,9 @@
+"""
+obstacle module containing the obstacle class and
+the obstacle movement class which gets the information needed for
+Game to initialize
+"""
+
 import pygame
 import random
 
