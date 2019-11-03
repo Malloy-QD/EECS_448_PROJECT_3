@@ -10,12 +10,25 @@ cd = 100
 class Obstacle:
 
     def __init__(self, master, x, y):
+        """
+        Constructs obstacle. Keep creating obstacles in window
+        :param: master
+        :param: x location for the random obstacles
+        :param: y location for the random obstacles
+        :return: returns none.
+        :pre: After player starting move their shark
+        """
         self._master = master
         self.x = x
         self.y = y
         self.lives = 1
 
     def update(self):
+        """
+        Give obstacle a random moving direction
+        :return: returns none.
+        :pre: after construct generate a location for obstacle
+        """
         temp = random.randint(0, 3)
         if temp == 0:
             self.y += speed
@@ -31,17 +44,42 @@ class Obstacle:
             self.x += speed
 
     def draw(self):
+        """
+        Draw the shape of obstacle(for project 3, red circle stands for obstacle)
+        :return: returns none.
+        :pre: after construct generate a location for obstacle
+        :post: draw shape on that location
+        """
         pygame.draw.circle(self._master, color, (self.x, self.y), radius)
 
     def get_center(self):
+        """
+        Help those check function to know whether shark touch a obstacle
+        :return: returns the center coordinate of that obstacle.
+        :pre: There is obstacle in the list
+        :post: Help those check function to know whether shark touch a obstacle
+        """
         return self.x + radius / 2, self.y + radius / 2
 
     def get_radius(self):
+        """
+        Help those check function to know whether shark touch a obstacle
+        :return: returns the radius of obstacle
+        :pre: There is obstacle in the list
+        :post: Help those check function to know whether shark touch a obstacle
+        """
         return radius / 2
 
 
 class ObstacleM:
+
     def __init__(self, master):
+        """
+        Constructs the property of obstacles
+        :param: master
+        :return: returns none.
+        :pre: list of obstacles is needed
+        """
         self._master = master
         self.list = []
         self.time = 0
@@ -49,6 +87,11 @@ class ObstacleM:
         self.lives = 1
 
     def number(self):
+        """
+        Generate coordinate for obstacle and the time gap
+        :return: returns none.
+        :post: Generate coordinate for obstacle and the time gap
+        """
         self.time += 1
         if self.time % cd == 0:
             x_scale = random.randint(0, self._master.get_width() - radius * 2)
@@ -58,6 +101,12 @@ class ObstacleM:
             self.num += 1
 
     def update(self):
+        """
+        update the list of obstacle
+        :return: returns none.
+        :pre: There is settled obstacle in the window
+        :post: update the list of obstacle
+        """
         temp = []
         for obstacle in self.list:
             obstacle.update()
@@ -65,5 +114,8 @@ class ObstacleM:
             self.list = temp
 
     def draw(self):
+        """
+        Draw obstacle on window
+        """
         for obstacle in self.list:
             obstacle.draw()
