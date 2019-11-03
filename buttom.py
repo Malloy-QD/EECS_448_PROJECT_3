@@ -4,7 +4,7 @@ buttom module containing the buttom class
 import pygame
 class buttom():
     def __init__(self,x,y,width,hight,color,text=None):
-         """
+        """
         Constructs buttom for menu. 
         :param: master
         :param: x location for the buttom
@@ -22,7 +22,7 @@ class buttom():
         self.text=text
     
     def draw(self,screen):
-         """
+        """
         draw a buttom in to the main screen
         :param: master
         :param: screen window for the buttom display
@@ -35,7 +35,7 @@ class buttom():
         screen.blit(text, (self.x + (self.width/2 - text.get_width()/2), self.y + (self.hight/2 - text.get_height()/2)))
     
     def ontop(self,position):
-         """
+        """
         checking if a position is on top of a buttom
         :param: master
         :param: position a set of x and y value
