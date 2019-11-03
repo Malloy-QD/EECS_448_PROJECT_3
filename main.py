@@ -33,7 +33,11 @@ def pre_intro():
     intro = pygame.image.load(intro_backg).convert()
     
     backg=pygame.Surface((worldx,worldy))
-    rect=intro.get_rect()
+    font=pygame.font.SysFont('Arial',20,True,True)
+    
+    text=font.render('Shake Shark Present ©',True,(255,255,255))
+   
+    
     i=1
     run=True
     while run:
@@ -43,9 +47,12 @@ def pre_intro():
                 quit()
        
         intro.set_alpha(i)
+        
         screen.blit(backg,backg.get_rect())
         screen.blit(intro, (100,100))
-        pygame.time.delay(15)
+        screen.blit(text,(390,550))
+        pygame.time.delay(16)
+        
         i+=1
         if(i==225):
             run=False
